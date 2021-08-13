@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% block head %}
+    <!--HEAD GOES HERE-->
+        {% include 'components/meta.html' %}
+        {% include 'components/style.html' %}
+    {% endblock head %}
+</head>
+<body>
+    {% block body %}
+    <!--PAGE CONTENT GOES HERE-->
+    {% endblock body %}
+
+    {% block scripts %}
+    <!--SCRIPTS GO HERE-->
+    {% endblock scripts %}
+</body>
+</html>
