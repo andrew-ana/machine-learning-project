@@ -1,0 +1,67 @@
+,Field,Field Description,Data Type,Length,Comments
+0,A1,Marketing Carrier code,Character,2,Two letter IATA code
+1,B1,Marketing Carrier Flight number,Character,Max length of 4,
+2,A2,Scheduled Operating Carrier Code,Character,2,Two letter IATA code
+3,B2,Scheduled Operating Carrier Flight number,Character,Max length of 4,
+4,A3,Actual Operating Carrier Code,Character,2,Two letter IATA code
+5,B3,Actual Operating Carrier Flight Number,Character,Max length of 4,
+6,C,Departure airport code,Character,3,Three letter Airport code
+7,D,Arrival airport code,Character,3,Three letter Airport code
+8,E,Date of flight operation,Num,8,Format ccyymrndd
+9,F,Day of the week of flight operation,Num,1,"Mon = 1 , Sun = 7"
+10,G8,Scheduled departure time as shown in Official Airline Guide(OAG),Num,4,Local time 24 hour clock
+11,H,Scheduled departure time as shown in CRS(selected by the Carrier),Num,4,Local time 24 hour clock
+12,I,Gate departure time (actual),Num,4,Local time 24 hour clock
+13,J,Scheduled arrival time per OAG,Num,4,Local time 24 hour clock
+14,K,Scheduled arrival time per CRS,Num,4,Local time 24 hour clock
+15,L,Gate arrival time (actual),Num,4,Local time 24 hour clock
+16,M,Difference between OAG and CRS scheduled departure times,Num,Max length of 4,In minutes (2 hours= 120 min) G minus H
+17,N,Difference between OAG and CRS scheduled arrival times,Num,Max length of 4,In minutes - J minus K
+18,O,Scheduled elapsed time per CRS,Num,Max length of 4,In minutes - K minus H
+19,P,Actual gate-to-gate time,Num,Max length of 4,In minutes - L minus I
+20,Q,Departure delay time (actual minutes),Num,Max length of 4,In minutes - I minus H
+21,R,Arrival delay time (actual minutes),Num,Max length of 4,In minutes - L minus K
+22,S,Elapsed time difference (actual minutes),Num,Max length of 4,In minutes - P minus O
+23,T,Wheels-off time (actual),Num,4,Local time 24 hour clock
+24,U,Wheels-on time (actual),Num,4,Local time 24 hour clock
+25,V,Aircraft tail number,Character,6,
+26,W,Cancellation code,Character,1,"Values are A,B,C, and D"
+27,X,Minutes late for Delay Code E - Carrier Caused,Num,Max length of 4,In minutes
+28,Y,Minutes late for Delay Code F - Weather,Num,Max length of 4,In minutes
+29,Z,Minutes late for Delay Code G - National Aviation System (NAS),Num,Max length of 4,In minutes
+30,AA,Minutes late for Delay Code H - Security,Num,Max length of 4,In minutes
+31,AB,Minutes late for Delay Code I - Late Arriving Flight (Initial),Num,Max length of 4,In minutes
+32,AC,First gate departure time (actual),Num,4,Local time 24 hour clock
+33,AD,Total ground time away from gate,Num,Max length of 4,In minutes
+34,AE,Longest ground time away from gate,Num,Max length of 4,In minutes
+35,AF,Number of landings at diverted airports,Num,1,"1 to 5 for diversions, 9 designates a fly return canceled flight"
+36,AG,Diverted airport code 1,Character,3,Three letter Airport code
+37,AH,Wheels-on time at diverted airport,Num,4,Local time 24 hour clock
+38,AI,Total ground time away from gate at diverted airport,Num,Max length of 4,In minutes
+39,AJ,Longest ground time away from gate at diverted airport,Num,Max length of 4,In minutes
+40,AK,Wheels-off time (actual) at diverted airport,Num,4,Local time 24 hour clock
+41,AL,Aircraft tail number,Character,6,
+42,AM,Diverted airport code 2,Character,3,Three letter Airport code
+43,AN,Wheels-on time at diverted airport,Num,4,Local time 24 hour clock
+44,AO,Total ground time away from gate at diverted airport,Num,Max length of 4,In minutes
+45,AP,Longest ground time away from gate at diverted airport,Num,Max length of 4,In minutes
+46,AQ,Wheels-off time (actual) at diverted airport,Num,4,Local time 24 hour clock
+47,AR,Aircraft tail number,Character,6,
+48,AS,Diverted airport code 3,Character,3,Three letter Airport code
+49,AT,Wheels-on time at diverted airport,Num,4,Local time 24 hour clock
+50,AU,Total ground time away from gate at diverted airport,Num,Max length of 4,In minutes
+51,AV,Longest ground time away from gate at diverted airport,Num,Max length of 4,In minutes
+52,AW,Wheels-off time (actual) at diverted airport,Num,4,Local time 24 hour clock
+53,AX,Aircraft tail number,Character,6,
+54,AY,Diverted airport code 4,Character,3,Three letter Airport code
+55,AZ,Wheels-on time at diverted airport,Num,4,Local time 24 hour clock
+56,BA,Total ground time away from gate at diverted airport,Num,Max length of 4,In minutes
+57,BB,Longest ground time away from gate at diverted airport,Num,Max length of 4,In minutes
+58,BC,Wheels-off time (actual) at diverted airport,Num,4,Local time 24 hour clock
+59,BD,Aircraft tail number,Character,6,
+60,BE,Diverted airport code 5,Character,3,Three letter Airport code
+61,BF,Wheels-on time at diverted airport,Num,4,Local time 24 hour clock
+62,BG,Total ground time away from gate at diverted airport,Num,Max length of 4,In minutes
+63,BH,Longest ground time away from gate at diverted airport,Num,Max length of 4,In minutes
+64,BI,Wheels-off time (actual) at diverted airport,Num,4,Local time 24 hour clock
+65,BJ,Aircraft tail number,Character,6,
