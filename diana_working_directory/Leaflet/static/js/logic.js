@@ -1,23 +1,26 @@
-//Mapping HW Diana Kennen
-//Leaflet Challenge Level 1
+//Machine Learning Project - Delay Map by Departure Airport
 
-//Link to major earthquakes 4.5+ from the last 30 days
-var usgs_url = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/4.5_month.geojson"
+//Link to geojson with airport and delay data
+var airport_url = "https://dlkennen.github.io/p3/airport.geojson"
 
 //GET request to the url
-d3.json(usgs_url).then(function(data) {
+d3.json(airport_url).then(function(data) {
     createFeatures(data.features);
 });
 
 //Function to create map and circle markers
-function createFeatures(earthquakeData) {
+function createFeatures(airportData) {
     function onEachFeature (feature, layer) {
-        layer.bindPopup("<h3>" + feature.properties.place +
-        "</h3><hr><p>" + new Date(feature.properties.time)+ "</p>"
-        + "<hr><p>" + "Magnitude:" + feature.properties.mag + " and " + "Depth: " + feature.geometry.coordinates[2] + "</p>" )
+        layer.bindPopup("<h3>" + feature.properties.Dep_Airport +
+        "</h3><hr><p>" + feature.properties.city_name + "</p>"
+        + "<hr><p>" + "Mean Flight Delay:" + Math.round(feature.properties.mean_arr_delay) + "</p>" )
     };
 
-    var earthquakes = L.geoJSON(earthquakeData, {
+    function scaleSize(x, a, b, min, max){
+        var fontSize = (((b - a) * (x - min)) / (max - min)) + a;
+        return Math.round(fontSize);
+    }
+    var airports = L.geoJSON(airportData, {
         pointToLayer: function(feature) {
             var latlng = [feature.geometry.coordinates[1], feature.geometry.coordinates[0]]
             return new L.CircleMarker(latlng, {
@@ -26,28 +29,28 @@ function createFeatures(earthquakeData) {
         style: restyle,
         onEachFeature: onEachFeature});
     
-    createMap(earthquakes);
+    createMap(airports);
     
     //Styling the size and color of the circle markers
     function restyle(feature) {
-        var size1 = feature.properties.mag**2;
-        if (feature.geometry.coordinates[2] < 15)
-            {return {color: "Beige", radius: [size1]};
-        }else if (feature.geometry.coordinates[2] < 40)
-            {return {color: "Bisque", radius: [size1]};
-        }else if (feature.geometry.coordinates[2] < 60)
-            {return {color: "BurlyWood", radius: [size1]};
-        }else if (feature.geometry.coordinates[2] < 80)
-            {return {color: "Peru", radius: [size1]};
+        var size1 = scaleSize(feature.properties.mean_arr_delay, 5, 40, -5, 448);
+        if (feature.properties.mean_arr_delay <= 5)
+            {return {color: "SkyBlue", radius: [size1]};
+        }else if (feature.properties.mean_arr_delay < 20)
+            {return {color: "SlateBlue", radius: [size1]};
+        }else if (feature.properties.mean_arr_delay < 40)
+            {return {color: "Blue", radius: [size1]};
+        }else if (feature.properties.mean_arr_delay < 60)
+            {return {color: "DarkSlateBlue", radius: [size1]};
         }else {
-            return {color: "SaddleBrown", radius: [size1]};
+            return {color: "MidnightBlue", radius: [size1]};
             };
         };
 
     };
 
 //Creating the map
-function createMap(earthquakes) {
+function createMap(airports) {
     var light = L.tileLayer("https://api.mapbox.com/styles/v1/mapbox/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}", {
         attribution: "Map data &copy; <a href=\"https://www.openstreetmap.org/\">OpenStreetMap</a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA</a>, Imagery © <a href=\"https://www.mapbox.com/\">Mapbox</a>",
         maxZoom: 18,
@@ -60,15 +63,15 @@ function createMap(earthquakes) {
     };
     
     var overlayMaps = {
-        Earthquakes: earthquakes
+        Airports: airports
     };
 
     var myMap = L.map("map", {
         center: [
-          0, 0
+          40, -92
         ],
-        zoom: 2,
-        layers: [light, earthquakes]
+        zoom: 4,
+        layers: [light, airports]
       });
     
     L.control.layers(baseMaps, overlayMaps, {collapsed: true}).addTo(myMap);
@@ -77,12 +80,12 @@ function createMap(earthquakes) {
     var legend = L.control({position: 'bottomright'})
     legend.onAdd = function(map) {
         var div = L.DomUtil.create("div", "info legend");
-        var colors = ["Beige", "Bisque", "BurlyWood", "Peru", "SaddleBrown"]
+        var colors = ["SkyBlue", "SlateBlue", "Blue", "DarkSlateBlue", "MidnightBlue"]
         var labels = []
-        var values = ["-10 to 14", "15 to 39", "40 to 59", "60 to 79", "80+"];
+        var values = ["0-5 min", "6-19 min", "20-39 min", "40-59 min", "60+ min"];
     
         // Add legend title
-        var legendInfo = "<h2>Earthquake Focus Depth</h2>"
+        var legendInfo = "<h2>Average Flight Delay <hr> by Departure</h2>"
         div.innerHTML = legendInfo;
     
         for (var i=0; i < 5; i++) {         
