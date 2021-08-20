@@ -6,6 +6,7 @@ from sqlalchemy import func
 import requests
 from . import db
 from .models import Airline
+from .load_model import run_prediction
 import json
 import os
 import random
@@ -84,3 +85,15 @@ def flights_by_date():
     qresults = Airline.query.with_entities(Airline.Date, func.count(Airline.Date)).group_by(Airline.Date).all()
     data['qresults'] = qresults
     return data
+
+@main.route('/flightprediction')
+def predict_flight():
+    data = {
+        'Mkt_Ccode' : 'B6',
+        'Dep_Airport' : 'ATL',
+        'Arr_Airport' : 'JAX',
+        'Day_Week' : 'mon',
+        'month' : 'oct',
+        'Sched_Dep_Time_OAG_Block' : 'morning'
+    }
+    return run_prediction(data)
