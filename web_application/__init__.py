@@ -4,10 +4,10 @@
 ## DEPENDENCIES
 import os
 from flask import Flask, render_template, request
-#from flask_sqlalchemy import SQLAlchemy
+from flask_sqlalchemy import SQLAlchemy
 
 # Create db outside of factory
-#db = SQLAlchemy()
+db = SQLAlchemy()
 
 # Create the app
 def create_app(test_config=None):
@@ -19,7 +19,7 @@ def create_app(test_config=None):
     app.config.from_object('config')
     
     # Initialize DataBase Connection
-    #db.init_app(app)
+    db.init_app(app)
     
     # blueprint for main parts of app
     from .main import main as main_blueprint

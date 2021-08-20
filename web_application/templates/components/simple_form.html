@@ -2,19 +2,30 @@
 <div class='d-flex justify-content-center'>
     <form id="simple_form">
         <div class="form-group row">
-            <label for="airport" class="col-sm-5 col-form-label">Airport</label>
+            <label for="flight_num" class="col-sm-5 col-form-label text-center">Flight Number</label>
             <div class="col-sm-7">
-                <input id="airport" name="airport" type="text">
+                <input id="flight_num" name="flight_num" type="text" placeholder="Ex: DL2556">
+            </div>
+        </div>
+        <p class="text-center">or</p>
+        <div class="form-group row">
+            <label for="departs-from" class="col-sm-5 col-form-label text-center">Departs from</label>
+            <div class="col-sm-7">
+                <input id="departs-from" name="departs-from" type="text" placeholder="Ex: ATL">
             </div>
         </div>
         <div class="form-group row">
-            <label for="flight_num" class="col-sm-5 col-form-label">Flight Number</label>
+            <label for="arrives-at" class="col-sm-5 col-form-label text-center">Arrives at</label>
             <div class="col-sm-7">
-                <input id="flight_num" name="flight_num" type="text">
+                <input id="arrives-at" name="arrives-at" type="text" placeholder="Ex: JFK">
             </div>
         </div>
+
         <div class='d-flex justify-content-center'>
-            <button type="button" id='form-update'>Click Me</button>
+            <button type="button" id='form-update'>See Flights</button>
+        </div>
+        <div class='d-flex justify-content-center mt-3'>
+            <button type="button" id='flight-summary'>Flights by Date</button>
         </div>
     </form>
 </div>
