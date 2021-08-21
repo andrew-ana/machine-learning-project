@@ -30,3 +30,15 @@ def other():
     data = dict()
     data["page_name"] = "Other"
     return render_template('other.html', data=data)
+
+@main.route('/delay-by-departure')
+def delay_by_departure():
+    data = dict()
+    data["page_name"] = "Delays by Departure"
+    return render_template('delaybydeparture.html', data=data)
+
+@main.route('/delay-by-arrival')
+def delay_by_arrival():
+    data = dict()
+    data["page_name"] = "Delays by Arrival"
+    return render_template('delaybyarrival.html', data=data)

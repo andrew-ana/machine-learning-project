@@ -7,13 +7,18 @@
         {% include 'components/style.html' %}
     {% endblock head %}
 </head>
+
 <body>
     {% block body %}
     <!--PAGE CONTENT GOES HERE-->
     {% endblock body %}
-
+    
     {% block scripts %}
-    <!--SCRIPTS GO HERE-->
+        <!--SCRIPTS GO HERE-->
+        {% include 'components/allscripts.html' %}
     {% endblock scripts %}
+
+    {% block customscripts %}
+    {% endblock customscripts %}
 </body>
 </html>

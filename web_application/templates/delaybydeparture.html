@@ -1,0 +1,19 @@
+{% extends 'index.html' %}
+
+{% block head %}
+<!--HEAD GOES HERE-->
+    {% include 'components/meta.html' %}
+    {% include 'components/style.html' %}
+    {% include 'components/leaflethead.html' %}
+{% endblock head %}
+
+{% block body %}
+    {% include 'components/navbar.html' %}
+    {% include 'components/leafletdiv.html' %}
+{% endblock body %}
+
+{% block customscripts %}
+    {% include 'components/leafletscripts.html' %}
+    <!-- Our JavaScript -->
+    <script type="text/javascript" src="/leaflet/departure.js"></script>
+{% endblock customscripts %}
