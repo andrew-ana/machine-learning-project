@@ -2,6 +2,7 @@
 #  We can change the routes and the functionality here
 
 from flask import Blueprint, render_template, request, redirect, url_for, jsonify
+from datetime import datetime as dt
 from sqlalchemy import func
 import requests
 from . import db
@@ -32,23 +33,20 @@ def about():
 @main.route('/other')
 def other():
     data = dict()
-    data["page_name"] = "Other"
-    return render_template('other.html', data=data)
+    data["page_name"] = "Flight Prediction"
+    return render_template('predict.html', data=data)
 
 @main.route('/predict', methods=['POST'])
 def predict():
     data = dict()
+    flight = dict()
 
     FLIGHT_API_KEY = "c9a2daca0495eef5267ab156f9195d41"
     FLIGHT_URL = "http://api.aviationstack.com/v1/flights"
 
-    departing_airport = request.form['departing_airport']
-    arriving_airport = request.form['arriving_airport']
     flight_num = request.form['flight_num']
-    
+
     data['flight_num'] = flight_num
-    data['arriving_airport'] = arriving_airport
-    data['departing_airport'] = departing_airport
     
     #Aviation API
     if flight_num:
@@ -56,26 +54,44 @@ def predict():
         if api_response.status_code == 200:
             api_data = api_response.json()['data']
             data['api_results'] = api_data
-            print(api_data)
+            flight['Dep_Airport'] = api_data[0]['departure']['iata']
+            flight['Arr_Airport'] = api_data[0]['arrival']['iata']
+            flight['Mkt_Ccode'] = api_data[0]['airline']['iata']
+            scheduled_takeoff = dt.strptime(api_data[0]['departure']['scheduled'], "%Y-%m-%dT%H:%M:%S+00:00")
+            hour = scheduled_takeoff.hour
+            if 0 <= hour < 3:
+                dep_block = "late_night"
+            elif 3 <= hour < 6:
+                dep_block = "early_morning"
+            elif 6 <= hour < 9:
+                dep_block = "morning"
+            elif 9 <= hour < 12:
+                dep_block = "late_morning"
+            elif 12 <= hour < 15:
+                dep_block = "early_afternoon"
+            elif 15 <= hour < 18:
+                dep_block = "late_afternoon"
+            elif 18 <= hour < 21:
+                dep_block = "evening"
+            else:
+                dep_block = "late_evening"
+
+            flight['Sched_Dep_Time_OAG_Block'] = dep_block
+            flight['month'] = scheduled_takeoff.strftime("%b").lower()
+            flight['Day_Week'] = scheduled_takeoff.strftime("%a").lower()
+            run_prediction(flight)
         else:
             data['api_results'] = api_response.status_code
             print(api_response)
-
-    # DB Query
-    qresults = Airline.query.filter(Airline.Dep_Airport==departing_airport, Airline.Arr_Airport==arriving_airport).limit(10).all()
+    # DB Query - Get historical flights between endpoints
+    qresults = Airline.query.filter(Airline.Dep_Airport==flight["Dep_Airport"], Airline.Arr_Airport==flight["Arr_Airport"]).limit(100).all()
     search_results = []
     if qresults: 
         for result in qresults:
-            print("Tail Number", result.Tail_Number)
-            print("Flight Date", result.Date)
-            search_results.append([result.Tail_Number, result.Date])
+            search_results.append([result.Date, result.Arr_Delay_Time_Actual])
     data['search_results'] = search_results
     return jsonify(data)
 
-#Features: 
-# features = ["Mkt_Ccode", "Dep_Airport", "Arr_Airport", "Day_Week", "month", "Sched_Dep_Time_OAG_Block"]
-# model_name.h5
-# model
 
 #Airline.query.with_entities(Airline.Date, func.count(Airline.Date)).group_by(Airline.Date).all()
 @main.route('/flightsbydate', methods=['POST'])
@@ -86,14 +102,4 @@ def flights_by_date():
     data['qresults'] = qresults
     return data
 
-@main.route('/flightprediction')
-def predict_flight():
-    data = {
-        'Mkt_Ccode' : 'B6',
-        'Dep_Airport' : 'ATL',
-        'Arr_Airport' : 'JAX',
-        'Day_Week' : 'mon',
-        'month' : 'oct',
-        'Sched_Dep_Time_OAG_Block' : 'morning'
-    }
-    return run_prediction(data)
+

@@ -2,8 +2,9 @@
 $.fn.searchResults = function(searchArray) {
     this.children().remove();
     container = this;
+    container.append('<h1 class="text-center">Historical Flights</h1>')
     searchArray.forEach(flight => {
-        container.append('<p class="text-center"> Tail Number: '+flight[0]+'.    Departure Date: '+flight[1]+'</p>')
+        container.append('<p class="text-center"> Departure Date: '+flight[0] + '.   Delay: '+flight[1]+'</p>')
     });
 }
 
@@ -21,9 +22,7 @@ $.fn.prediction = function() {
     $.ajax({
         url: '/predict',
         data: {
-            flight_num : $('#flight_num').val(),
-            departing_airport : $('#departs-from').val(),
-            arriving_airport : $('#arrives-at').val()
+            flight_num : $('#flight_num').val()
         },
         type: 'POST',
         success: function(response) {
