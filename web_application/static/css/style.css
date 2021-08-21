@@ -1,0 +1,149 @@
+body {
+  background-image: linear-gradient(rgba(162, 191, 255, 0.384), rgba(162, 191, 255, 0.384)), url("/Images/background.jpeg");
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+  }
+
+.site-heading {
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+    text-transform: uppercase;
+    line-height: 1;
+}
+.site-heading .site-heading-upper {
+    display: block;
+    color: white;
+    font-size: 2rem;
+    font-weight: 800;
+}
+.site-heading .site-heading-lower {
+    font-size: 5rem;
+    font-weight: 400;
+    line-height: 4rem;
+}
+
+.section-heading {
+  text-transform: uppercase;
+}
+.section-heading .section-heading-upper {
+  display: block;
+  font-size: 1rem;
+  font-weight: 800;
+}
+.section-heading .section-heading-lower {
+  display: block;
+  font-size: 2rem;
+  font-weight: 400;
+}
+
+.bg-faded {
+  background-color: steelblue;
+}
+
+.intro {
+  position: relative;
+}
+@media (min-width: 767px) {
+  .intro .intro-img {
+    width: 75%;
+    float: right;
+  }
+  .intro .intro-text {
+    left: 0;
+    width: 60%;
+    margin-top: 3rem;
+    position: absolute;
+  }
+  .intro .intro-text .intro-button {
+    width: 100%;
+    left: 0;
+    position: absolute;
+    bottom: -2rem;
+  }
+  .intro .intro-text {
+    width: 45%;
+  }
+}
+
+
+@media (min-width: 767px) {
+  .about-page .about-page-img {
+    position: relative;
+    width: 100%;
+  }
+  .about-page .about-page-text {
+    position: relative;
+    width: 100%;
+  }
+
+  .about-page-header .about-page-upper {
+    display: block;
+    font-size: 1rem;
+    font-weight: 800;
+  }
+  .about-page-header .about-page-lower {
+    display: block;
+    font-size: 1rem;
+    font-weight: 800;
+  }
+  .about-page-text .github-page {
+    width: 100%;
+  }
+  .about-page-text .linkedin-page {
+    width: 100%;
+  }
+  .about-page {
+    float:left;
+    width: 20%;
+  }
+  .headshots .about-page-img {
+    height: 20rem
+  }
+}
+
+.process {
+  position: relative;
+}
+@media (min-width: 767px) {
+  .process .process-img {
+    width: 75%;
+    float: left;
+    position: relative;
+    right: 10rem
+  }
+  .process .process-text {
+    width: 70%;
+    position: relative;
+    float: right;
+  }
+  .process .process-text {
+    width: 100%;
+    position: relative;
+    float: right;
+    left: 10rem;
+    bottom: 27rem;
+  }
+  .process .process-text {
+    width: 50%;
+  }
+}
+
+@media (min-width: 767px) {
+  .chart {
+    width: 50%;
+    position: relative;
+    float: left;
+    left: 10rem;
+    top: 2.5rem;
+  }
+
+ .plotly .plotly-text {
+    width: 50%;
+    float: left;
+    left: 15rem;
+    position: relative;
+    top: 5rem;
+    bottom: 5rem;
+  }
+}
