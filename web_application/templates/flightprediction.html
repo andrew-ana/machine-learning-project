@@ -1,0 +1,16 @@
+{% extends 'index.html' %}
+
+{% block head %}
+<!--HEAD GOES HERE-->
+    {% include 'components/meta.html' %}
+    {% include 'components/style.html' %}
+    {% include 'components/gaugestyle.html' %}
+{% endblock head %}
+
+{% block body %}
+    {% include 'components/navbar.html' %}
+    {% include 'components/ontimegauge.html' %}
+{% endblock body %}
+
+{% block customscripts %}
+{% endblock customscripts %}
