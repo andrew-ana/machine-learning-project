@@ -42,3 +42,9 @@ def delay_by_arrival():
     data = dict()
     data["page_name"] = "Delays by Arrival"
     return render_template('delaybyarrival.html', data=data)
+
+@main.route('/flightprediction')
+def flight_prediction():
+    data = dict()
+    data["page_name"] = "Flight Predictor"
+    return render_template('flightprediction.html', data=data)

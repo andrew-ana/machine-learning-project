@@ -1,0 +1,30 @@
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+    google.charts.load('current', {'packages':['gauge']});
+    google.charts.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+
+    var data = google.visualization.arrayToDataTable([
+        ['Label', 'Value'],
+        ['On-Time', 100],
+    ]);
+
+    var options = {
+        width: 400, height: 120,
+        redFrom: 0, redTo: 50,
+        yellowFrom:50, yellowTo: 75,
+        greenFrom:75, greenTo: 100,
+        minorTicks: 5,
+        animation: {
+            duration : 800,
+            startup : true,
+        }
+    };
+
+    var chart = new google.visualization.Gauge(document.getElementById('chart_div'));
+
+    chart.draw(data, options);
+
+    }
+</script>
