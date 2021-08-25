@@ -12,10 +12,78 @@
     </header>
 
     <div class = "row justify-content-center">
+      <div class = "col-md-12 justify-content-center">
+         <h1>Group Process</h1>
+          <table class="styled-table">
+            <thead>
+                <tr>
+                    <th>Project Component</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Data Sources</td>
+                    <td><p>Our primary source of data was On-Time performance data
+                      on flights departing from US cities as published by the Bureau of
+                      Transportation Statistics. This data was supplemented with BTS information
+                      on the column headings. 
+                    </p></td>
+                </tr>
+                <tr>
+                  <td>Data Cleaning</td>
+                  <td>The data was processed in Python. The number of categories was reduced
+                    to those columns that would be predictive of on time arrival such as departure
+                    city, arrival city, airline, and datetime. Month, day of the week, and time of day columns
+                    were created as well as a target response column for late or on time arrival. 
+                    In addition, location data on on the airports including city, latitude, and longitude 
+                    was merged with the dataframe for later map creation. 
+                  </td>
+                </tr>
+                <tr>
+                  <td>Data Base</td>
+                  <td>Our first attempt at creating a database was with loading the table directly into SQL. Due to the large
+                    file sizes that were involved (16 million rows), however, this was not functional. Instead, the data was loaded into 
+                    AWS-RDS and a host connection was created with PostgresSQL. This database was queried using SQL Alchemy. 
+                    Limitations in processing capabilities often required us to use subsamples of the table for analysis.
+                  </td>
+                </tr>
+                <tr>
+                  <td>Visualizations</td>
+                  <td>Several data visualizations were created using Plotly in Javascript using a 10% sample of 2019 data.
+                    These included bar graphs of delays by carrier, cause, time of day, and worst routes. A line graph was
+                    also created for delay by day of the week. 
+                    Two geojsons were created from a 200k row sample from the final data frame: one for departure airports and one for arrival airports.
+                    These were use to create two bubble maps using Leaflet that depict the average flight delay by airport.
+                  </td>
+                </tr>
+                <tr>
+                  <td>Machine Learning</td>
+                  <td>To predict the probability of late arrival we built a neural network in Keras. Prior to training, categorical 
+                    features were dummified in pandas and the target was label endcoded in Keras. We used a sequential network 
+                    with dense layers. The input had 790 dimensions, the hidden layer had 40 units (activation = 'relu') and 
+                    the output layer had two units (activation = 'softmax'). We used the Adam optimizer with a learning rate 
+                    of 0.01, with 'binary_crossentropy' as the loss function, and 'AUC' as our test score. 
+                    The model was trained over 10 epochs with the default batch size of 32. For comparison, h2o AutoML was also tested on a
+                    sample of the data set. The best results achieved when training with AutoML was with the Stacked Ensemble (AUC = 0.63).
+                    This underperformed the neural network described previously.</td>
+                </tr>
+                <tr>
+                  <td>Flask App and Hosting</td>
+                  <td>The backend is served with Flask and hosted on Heroku.</td>
+                </tr>
+          </tbody>
+      </table>
+      <p></p>
+      </div>
+    </div>
+
+
+    <div class = "row justify-content-center">
     <div class = "col-md-12 justify-content-center"> 
-    <section class="page-section about-page">
-      <div class="container">
-        <div class="headshots">
+    <section class="page-section about-page justify-content-center">
+      <div class="container justify-content-center">
+        <div class="headshots justify-content-center">
               <img class="about-page-img img-fluid mb-3 mb-lg-0 rounded" src="/Images/Alex.jpg" width = "100" height = "100" alt="Alex Gainer" />
               <div class="about-page-text left-0 text-center bg-faded p-5 rounded">
                   <h2 class="about-page-header mb-4">
@@ -30,9 +98,9 @@
       </div>
     </section>
   
-    <section class="page-section about-page">
-      <div class="container">
-        <div class="headshots">
+    <section class="page-section about-page justify-content-center">
+      <div class="container justify-content-center">
+        <div class="headshots justify-content-center">
               <img class="about-page-img img-fluid mb-3 mb-lg-0 rounded" src="/Images/Andrew.jpg" width = "100" height = "100" alt="Andrew Anastasiades" />
               <div class="about-page-text left-0 text-center bg-faded p-5 rounded">
                   <h2 class="about-page-header mb-4">
@@ -47,9 +115,9 @@
       </div>
     </section>
 
-    <section class="page-section about-page">
-      <div class="container">
-        <div class="headshots">
+    <section class="page-section about-page justify-content-center">
+      <div class="container justify-content-center">
+        <div class="headshots justify-content-center">
               <img class="about-page-img img-fluid mb-3 mb-lg-0 rounded" src="/Images/Diana.jpg" width = "100" height = "100" alt="Diana Kennen" />
               <div class="about-page-text left-0 text-center bg-faded p-5 rounded">
                   <h2 class="about-page-header mb-4">
@@ -64,14 +132,14 @@
       </div>
     </section>
   
-    <section class="page-section about-page">
-      <div class="container">
-        <div class="headshots">
+    <section class="page-section about-page justify-content-center">
+      <div class="container justify-content-center">
+        <div class="headshots justify-content-center">
               <img class="about-page-img img-fluid mb-3 mb-lg-0 rounded" src="/Images/corey.jpg" width = "100" height = "100" alt="Corey Devin Anderson" />
               <div class="about-page-text left-0 text-center bg-faded p-5 rounded">
                   <h2 class="about-page-header mb-4">
                       <span class="about-page-upper">Links</span>
-                      <span class="about-page-lower">Corey D. Anderson</span>
+                      <span class="about-page-lower">Corey Anderson</span>
                   </h2>
                   <a href="https://github.com/coreydevinanderson" target="_blank"><img class ="github-page img-fluid mr-1 rounded"src="/Images/github.png" width = "40" height = "40"/></a>
                   <p></p>
@@ -91,9 +159,9 @@
 
     <div class = "row justify-content-center">
     <div class = "col-md-12 justify-content-center">
-    <section class="page-section about-page">
-      <div class="container">
-        <div class="headshots">
+    <section class="page-section about-page justify-content-center">
+      <div class="container justify-content-center">
+        <div class="headshots justify-content-center">
               <img class="about-page-img img-fluid mb-3 mb-lg-0 rounded" src="/Images/eric.jpg" width = "100" height = "100" alt="Eric Shadle" />
               <div class="about-page-text left-0 text-center bg-faded p-5 rounded">
                   <h2 class="about-page-header mb-4">
@@ -109,10 +177,10 @@
     </section>
 
 
-      <section class="page-section about-page">
-        <div class="container">
+      <section class="page-section about-page justify-content-center">
+        <div class="container justify-content-center">
           
-          <div class="headshots">
+          <div class="headshots justify-content-center">
                 <img class="about-page-img img-fluid mb-3 mb-lg-0 rounded" src="/Images/Rodney.jpg" width = "100" height = "100" alt="Rodney Davermann" />
                 <div class="about-page-text left-0 text-center bg-faded p-5 rounded">
                     <h2 class="about-page-header mb-4">
@@ -127,9 +195,9 @@
         </div>
       </section>
 
-      <section class="page-section about-page">
-        <div class="container">
-          <div class="headshots">
+      <section class="page-section about-page justify-content-center">
+        <div class="container justify-content-center">
+          <div class="headshots justify-content-center">
                 <img class="about-page-img img-fluid mb-3 mb-lg-0 rounded" src="/Images/Valerie.png" width = "100" height = "100" alt="Valerie Pippenger" />
                 <div class="about-page-text left-0 text-center bg-faded p-5 rounded">
                     <h2 class="about-page-header mb-4">

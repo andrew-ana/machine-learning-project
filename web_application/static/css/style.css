@@ -1,5 +1,5 @@
 body {
-  background-image: linear-gradient(rgba(162, 191, 255, 0.384), rgba(162, 191, 255, 0.384)), url("/Images/background.jpeg");
+  background-color: #B6D0E2;
   background-attachment: fixed;
   background-position: center;
   background-size: cover;
@@ -70,6 +70,7 @@ body {
 @media (min-width: 767px) {
   .about-page .about-page-img {
     position: relative;
+    height: auto;
     width: 100%;
   }
   .about-page .about-page-text {
@@ -98,7 +99,7 @@ body {
     width: 20%;
   }
   .headshots .about-page-img {
-    height: 20rem
+    height: auto
   }
 }
 
@@ -146,4 +147,27 @@ body {
     top: 5rem;
     bottom: 5rem;
   }
+}
+
+.styled-table thead tr {
+  background-color: steelblue;
+  color: #ffffff;
+  text-align: left;
+}
+
+.styled-table th,
+.styled-table td {
+    padding: 12px 15px;
+}
+
+.styled-table tbody tr {
+  border-bottom: 1px solid #dddddd;
+}
+
+.styled-table tbody tr:nth-of-type(even) {
+  background-color: #f3f3f3;
+}
+
+.styled-table tbody tr:last-of-type {
+  border-bottom: 2px solid #0d0361;
 }
