@@ -1,7 +1,10 @@
 {% extends 'index.html' %}
-
+{% block custom_styles %}
+<link rel="stylesheet" href="/css/sliderstyle.css">
+{% endblock custom_styles %}
 {% block body %}
     {% include 'components/navbar.html' %}
+    {% include 'components/slider.html' %}
 
     
 {% endblock body %}
