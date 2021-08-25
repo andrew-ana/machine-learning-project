@@ -2,19 +2,19 @@
 <div class='d-flex justify-content-center'>
     <form id="simple_form">
         <div class="form-group row">
-            <label for="airport" class="col-sm-5 col-form-label">Airport</label>
+            <label for="flight_num" class="col-sm-5 col-form-label text-center">Flight Number</label>
             <div class="col-sm-7">
-                <input id="airport" type="text">
+                <input id="flight_num" name="flight_num" type="text" placeholder="Ex: DL2556">
             </div>
         </div>
-        <div class="form-group row">
-            <label for="flight_num" class="col-sm-5 col-form-label">Flight Number</label>
-            <div class="col-sm-7">
-                <input id="flight_num" type="text">
-            </div>
-        </div>
+
         <div class='d-flex justify-content-center'>
-            <input type="submit" class="button">
+            <button type="button" id='form-update'>See Flights</button>
         </div>
+        <!--
+        <div class='d-flex justify-content-center mt-3' style='display: none;'>
+            <button type="button" id='flight-summary'>Flights by Date</button>
+        </div>
+        -->
     </form>
 </div>
