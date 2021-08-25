@@ -1,0 +1,30 @@
+{% extends 'index.html' %}
+
+{% block custom_styles %}
+<script src="https://cdn.plot.ly/plotly-2.3.1.min.js"></script>
+{% endblock custom_styles %}
+
+{% block body %}
+    {% include 'components/navbar.html' %}
+    <div id="vis-container"></div>
+{% endblock body %}
+
+
+{% block customscripts %}
+{% if data.display == "dow" %}
+    <script type="text/javascript" src="/js/line_dow.js"></script>
+{% endif %}
+{% if data.display == "delay_carriers" %}
+    <script type="text/javascript" src="/js/bar_carrier_delays.js"></script>
+{% endif %}
+{% if data.display == "delay_causes" %}
+    <script type="text/javascript" src="/js/delay_causes.js"></script>
+{% endif %}
+{% if data.display == "hourly_delays" %}
+    <script type="text/javascript" src="/js/hourly_delays.js"></script>
+{% endif %}
+{% if data.display == "route_delays" %}
+    <script type="text/javascript" src="/js/route_delays.js"></script>
+{% endif %}
+
+{% endblock customscripts %}

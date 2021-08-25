@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+
+	<title>Booking Form HTML Template</title>
+
+	<!-- Google font -->
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:300,600" rel="stylesheet">
+
+	<!-- Bootstrap -->
+	<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" />
+
+	<!-- Custom stlylesheet -->
+	<link type="text/css" rel="stylesheet" href="css/style.css" />
+
+	
+
+</head>
+
+<body>					
+	<div id="booking" class="section">
+		<div class="section-center">
+			<div class="container">
+				<div class="row">
+					<div class="booking-form">
+						<div class="col-md-4">
+							<input class="form-control" type="text" placeholder="Enter Airline">
+							<span class="form-label">Flight Number</span>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="booking-form">
+						<form>
+							<div class="col-md-4">
+								<div class="form-group">
+									<input class="form-control" type="text" placeholder="Enter Airline" id="airline" list="airlineList">
+                                    <datalist id="airlineList">
+                                        <option>Delta</option>
+                                        <option>Southwest</option>
+                                    </datalist>
+									<span class="form-label">Airline</span>
+								</div>
+							</div>
+							<div class="col-md-4">
+								<div class="form-group">
+									<input class="form-control" type="text" placeholder="Enter Airport" id="airport" list="airportList">
+                                    <datalist id="airportList">
+                                        <option>---</option>
+                                        <option>---</option>
+                                    </datalist>
+									<span class="form-label">Departure Airport</span>
+								</div>
+							</div>
+							<div class="col-md-4">
+								<div class="form-group">
+									<input class="form-control" type="text" placeholder="Day" id="days" list="daysOfWeek">
+                                    <datalist id="daysOfWeek">
+                                        <option>Monday</option>
+                                        <option>Tuesday</option>
+                                        <option>Wednesday</option>
+                                        <option>Thursday</option>
+                                        <option>Friday</option>
+                                        <option>Saturday</option>
+                                        <option>Sunday</option>
+                                    </datalist>
+									<span class="form-label">Day of Week</span>
+								</div>
+							</div>
+							<div class="col-md-4">
+								<div class="form-group">
+									<input class="form-control" type="text" placeholder="Month" required id="month" list="monthsList">
+                                    <datalist id="monthsList">
+                                        <option>January</option>
+                                        <option>February</option>
+                                        <option>March</option>
+                                        <option>April</option>
+                                        <option>May</option>
+                                        <option>June</option>
+                                        <option>July</option>
+                                        <option>August</option>
+                                        <option>September</option>
+                                        <option>October</option>
+                                        <option>November</option>
+                                        <option>December</option>
+                                    </datalist>
+									<span class="form-label">Month</span>
+								</div>
+							</div>
+							<div class="col-md-4">
+								<div class="form-group">
+									<input class="form-control" type="text" placeholder="Time"required>
+									<span class="form-label">Time of Day</span>
+								</div>
+							</div>
+							<div class="col-md-4">
+								<div class="form-btn">
+									<button class="submit-btn">Predict Delay</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>
