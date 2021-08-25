@@ -7,6 +7,10 @@
 {% block body %}
     {% include 'components/navbar.html' %}
     <div id="vis-container"></div>
+    {% if data.display=="delay_causes" %}
+    {% include 'components/delayCauses.html' %}
+    {% endif %}
+
 {% endblock body %}
 
 
