@@ -27,7 +27,7 @@ $.fn.prediction = function() {
         type: 'POST',
         success: function(response) {
             $('#loading-icon').hide()
-            $('#form-output').searchResults(response.search_results);
+            $('#form-output').append('<p>'+response.prediction+'</p>');
         },
         error: function(response){
             console.log('Bad Response')

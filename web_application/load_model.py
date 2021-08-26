@@ -15,4 +15,4 @@ def run_prediction(flight):
     #prediction = np.argmax(model.predict(df), axis=-1)
     prediction = model.predict(df)
     print(prediction)
-    return 'Test'
+    return prediction

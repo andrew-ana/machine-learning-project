@@ -112,17 +112,11 @@ def predict():
             flight['Sched_Dep_Time_OAG_Block'] = dep_block
             flight['month'] = scheduled_takeoff.strftime("%b").lower()
             flight['Day_Week'] = scheduled_takeoff.strftime("%a").lower()
-            run_prediction(flight)
+            prediction = run_prediction(flight)
+            data['prediction'] = str(prediction[0][0]), str(prediction[0][1])
         else:
             data['api_results'] = api_response.status_code
             print(api_response)
-    # DB Query - Get historical flights between endpoints
-    qresults = Airline.query.filter(Airline.Dep_Airport==flight["Dep_Airport"], Airline.Arr_Airport==flight["Arr_Airport"]).limit(100).all()
-    search_results = []
-    if qresults: 
-        for result in qresults:
-            search_results.append([result.Date, result.Arr_Delay_Time_Actual])
-    data['search_results'] = search_results
     return jsonify(data)
 
 
