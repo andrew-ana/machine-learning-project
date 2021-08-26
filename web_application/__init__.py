@@ -4,7 +4,7 @@
 ## DEPENDENCIES
 import os
 from flask import Flask, render_template, request
-#from flask_sqlalchemy import SQLAlchemy
+from flask_sqlalchemy import SQLAlchemy
 
 # Create db outside of factory
 db = SQLAlchemy()
