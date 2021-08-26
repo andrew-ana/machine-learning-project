@@ -2,10 +2,21 @@
 
 {% block custom_styles %}
     {% include 'components/gaugestyle.html' %}
+    <link rel='stylesheet' src='/css/formstyle.css'>
+    <style>
+        #booking {
+        font-family: 'Montserrat', sans-serif;
+        background-image: url('/Images/form/delays.jpg');
+        background-size: cover;
+        background-position: center;
+        font-weight: 300;
+        }
+    </style>
 {% endblock custom_styles %}
 
 {% block body %}
     {% include 'components/navbar.html' %}
+    {% include 'components/prettyform.html' %}
     {% include 'components/simple_form.html' %}
     {% include 'components/simple_form_response.html' %}
     {% include 'components/ontimegauge.html' %}

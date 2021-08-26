@@ -57,6 +57,7 @@ $('#form-update').click(function(){
     $('#form-output').children().remove();
     $('#loading-icon').show()
     $(document).prediction();
+    drawChart();
 });
 
 /*
