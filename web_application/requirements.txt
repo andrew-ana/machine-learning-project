@@ -1,4 +1,0 @@
-flask
-json
-main
-dnspython
