@@ -113,7 +113,7 @@ def predict():
             flight['month'] = scheduled_takeoff.strftime("%b").lower()
             flight['Day_Week'] = scheduled_takeoff.strftime("%a").lower()
             prediction = run_prediction(flight)
-            data['prediction'] = str(prediction[0][0]), str(prediction[0][1])
+            data['prediction'] = prediction
         else:
             data['api_results'] = api_response.status_code
             print(api_response)

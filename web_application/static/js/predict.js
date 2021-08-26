@@ -8,17 +8,27 @@ $.fn.searchResults = function(searchArray) {
     });
 }
 
-$.fn.flightList = function(searchArray) {
-    this.children().remove();
-    container = this;
-    searchArray.forEach(date => {
-        container.append('<p class="text-center"> Flight Date:'+date[0]+'.    Number of Flights'+date[1]+'</p>')
-    });
+function styleResults(value) {
+    if (value<= 50) {
+        $('#result-description').text('You are not going to make it.')
+        $('.result-text').addClass('text-danger')
+        $('.result-text').removeClass('text-warning')
+        $('.result-text').removeClass('text-success')
+    } else if (value <= 75) {
+        $('#result-description').text('You might make it. But we doubt it.')
+        $('.result-text').removeClass('text-danger')
+        $('.result-text').addClass('text-warning')
+        $('.result-text').removeClass('text-success')
+    } else {
+        $('#result-description').text('You are probably chill')
+        $('.result-text').removeClass('text-danger')
+        $('.result-text').removeClass('text-warning')
+        $('.result-text').addClass('text-success')
+    }
 }
 
 // Predict with form data
 $.fn.prediction = function() {
-    console.log($('#departs-from').val());
     $.ajax({
         url: '/predict',
         data: {
@@ -27,23 +37,11 @@ $.fn.prediction = function() {
         type: 'POST',
         success: function(response) {
             $('#loading-icon').hide()
-            $('#form-output').append('<p>'+response.prediction+'</p>');
-        },
-        error: function(response){
-            console.log('Bad Response')
-        }
-    })
-};
-
-// Get Number of flights by date
-$.fn.flightsByDate = function() {
-    $.ajax({
-        url: '/flightsbydate',
-        data: {},
-        type: 'POST',
-        success: function(response) {
-            $('#loading-icon').hide()
-            $('#form-output').flightList(response.qresults);
+            $('#result-container').show()
+            $('#result-numeric').children().remove()
+            $('#result-numeric').append('<h1 class="text-center">'+response.prediction*100+'%</h1>');
+            styleResults(response.prediction*100)
+            drawChart(response.prediction);
         },
         error: function(response){
             console.log('Bad Response')
@@ -54,15 +52,18 @@ $.fn.flightsByDate = function() {
 
 // LISTENER: When the button is clicked, follow route
 $('#form-update').click(function(){
+    $('#result-container').hide();
     $('#form-output').children().remove();
     $('#loading-icon').show()
     $(document).prediction();
+    
 });
 
+/*
 // LISTENER: When the button is clicked, follow route
 $('#flight-summary').click(function(){
     $('#form-output').children().remove();
     $('#loading-icon').show()
     $(document).flightsByDate();
 });
-
+*/

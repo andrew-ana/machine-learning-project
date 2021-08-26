@@ -14,5 +14,4 @@ def run_prediction(flight):
     model = load_model("web_application/nn_v1.h5")
     #prediction = np.argmax(model.predict(df), axis=-1)
     prediction = model.predict(df)
-    print(prediction)
-    return prediction
+    return round(float(prediction[0][0]), 4)
