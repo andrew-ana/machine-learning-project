@@ -1,86 +1,34 @@
-<div id="booking" class="section">
-	<div class="section-center">
-		<div class="container">
-			<div class="row">
-				<div class="booking-form">
-					<div class="col-md-4">
-						<input class="form-control" type="text" placeholder="Enter Airline">
-						<span class="form-label">Flight Number</span>
+<div id="booking" class="section" style="height: 575px; padding: 50px; margin-top: 10px;">
+	<div class="row">
+		<div class="container col-8" style="height: 475px; border-radius: 5px; background-color: rgba(182, 208,226, 0.8);">
+			<div class="section-center" >
+				<div class="container">
+					<div class="row align-middle justify-content-center text-center">
+						<div class="form-group col-4">
+							<label class="col-form-label col-form-label-lg mt-4" for="flight_num">Enter a Flight Number</label>
+							<input id="flight_num" name="flight_num" class="form-control form-control-lg text-center" type="text" placeholder="Ex: WN348">
+						</div>
+						<div class='d-flex justify-content-center mt-4'>
+							<button class="btn btn-primary" type="button" id='form-update'>Predict</button>
+						</div>
+						<div class="row mt-3 flex justify-content-center">
+							<div id='loading-icon' class="spinner-border text-primary" role="status" style='display: none;'>
+								<span class="sr-only"></span>
+								</div>
+							</div>
+							<div id='form-output' class="flex justify-content-center">
+							</div>
+						</div>
+					</div>
+					<div class="row m-3 bg-light" id="result-container" style="height:200px; display: none; border-radius: 10px;">
+						<div class="col-4 d-flex align-items-center justify-items-right" id="gauge-container">
+							<div id="chart_div" style="width: 400px; height: 120px;"></div>
+						</div>
+						<div class="result-text col-4 d-flex align-items-center" id="result-numeric"></div>
+						<div class="result-text col-4 d-flex align-items-center" id="result-description"></div>
 					</div>
 				</div>
 			</div>
-			<div class="row">
-				<div class="booking-form">
-					<form>
-						<div class="col-md-4">
-							<div class="form-group">
-								<input class="form-control" type="text" placeholder="Enter Airline" id="airline" list="airlineList">
-								<datalist id="airlineList">
-									<option>Delta</option>
-									<option>Southwest</option>
-								</datalist>
-								<span class="form-label">Airline</span>
-							</div>
-						</div>
-						<div class="col-md-4">
-							<div class="form-group">
-								<input class="form-control" type="text" placeholder="Enter Airport" id="airport" list="airportList">
-								<datalist id="airportList">
-									<option>---</option>
-									<option>---</option>
-								</datalist>
-								<span class="form-label">Departure Airport</span>
-							</div>
-						</div>
-						<div class="col-md-4">
-							<div class="form-group">
-								<input class="form-control" type="text" placeholder="Day" id="days" list="daysOfWeek">
-								<datalist id="daysOfWeek">
-									<option>Monday</option>
-									<option>Tuesday</option>
-									<option>Wednesday</option>
-									<option>Thursday</option>
-									<option>Friday</option>
-									<option>Saturday</option>
-									<option>Sunday</option>
-								</datalist>
-								<span class="form-label">Day of Week</span>
-							</div>
-						</div>
-						<div class="col-md-4">
-							<div class="form-group">
-								<input class="form-control" type="text" placeholder="Month" required id="month" list="monthsList">
-								<datalist id="monthsList">
-									<option>January</option>
-									<option>February</option>
-									<option>March</option>
-									<option>April</option>
-									<option>May</option>
-									<option>June</option>
-									<option>July</option>
-									<option>August</option>
-									<option>September</option>
-									<option>October</option>
-									<option>November</option>
-									<option>December</option>
-								</datalist>
-								<span class="form-label">Month</span>
-							</div>
-						</div>
-						<div class="col-md-4">
-							<div class="form-group">
-								<input class="form-control" type="text" placeholder="Time"required>
-								<span class="form-label">Time of Day</span>
-							</div>
-						</div>
-						<div class="col-md-4">
-							<div class="form-btn">
-								<button class="submit-btn">Predict Delay</button>
-							</div>
-						</div>
-					</form>
-				</div>
-			</div>
 		</div>
-	</div>
+	</div>	
 </div>

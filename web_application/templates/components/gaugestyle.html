@@ -1,13 +1,13 @@
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script type="text/javascript">
     google.charts.load('current', {'packages':['gauge']});
-    //google.charts.setOnLoadCallback(drawChart);
+    google.charts.setOnLoadCallback(drawChart, 0);
 
-    function drawChart() {
+    function drawChart(gauge_value) {
 
     var data = google.visualization.arrayToDataTable([
         ['Label', 'Value'],
-        ['On-Time', 100],
+        ['On-Time', gauge_value*100],
     ]);
 
     var options = {
