@@ -1,16 +1,16 @@
 {% extends 'index.html' %}
 
-{% block head %}
-<!--HEAD GOES HERE-->
-    {% include 'components/meta.html' %}
-    {% include 'components/style.html' %}
+{% block custom_styles %}
     {% include 'components/gaugestyle.html' %}
-{% endblock head %}
+{% endblock custom_styles %}
 
 {% block body %}
     {% include 'components/navbar.html' %}
+    {% include 'components/simple_form.html' %}
+    {% include 'components/simple_form_response.html' %}
     {% include 'components/ontimegauge.html' %}
 {% endblock body %}
 
 {% block customscripts %}
+<script src='/js/predict.js'></script>
 {% endblock customscripts %}
