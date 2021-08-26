@@ -63,7 +63,7 @@
                     features were dummified in pandas and the target was label endcoded in Keras. We used a sequential network 
                     with dense layers. The input had 790 dimensions, the hidden layer had 40 units (activation = 'relu') and 
                     the output layer had two units (activation = 'softmax'). We used the Adam optimizer with a learning rate 
-                    of 0.01, with 'binary_crossentropy' as the loss function, and 'AUC' as our test score. 
+                    of 0.001, with 'binary_crossentropy' as the loss function, and 'AUC' as our test score. 
                     The model was trained over 10 epochs with the default batch size of 32. For comparison, h2o AutoML was also tested on a
                     sample of the data set. The best results achieved when training with AutoML was with the Stacked Ensemble (AUC = 0.63).
                     This underperformed the neural network described previously.</td>
@@ -224,8 +224,3 @@
         crossorigin="anonymous"></script>
 
 {% endblock body %}
-
-<<<<<<< HEAD
-
-=======
->>>>>>> 61bd535115c6427d510783033436c442ba07f80c
