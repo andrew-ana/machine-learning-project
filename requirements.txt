@@ -4,6 +4,6 @@ gunicorn
 requests
 datetime
 flask-sqlalchemy
-tensorflow
+tensorflow-cpu
 pandas
 numpy
