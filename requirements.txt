@@ -1,2 +1,9 @@
 flask
 dnspython
+gunicorn
+requests
+datetime
+flask-sqlalchemy
+tensorflow
+pandas
+numpy

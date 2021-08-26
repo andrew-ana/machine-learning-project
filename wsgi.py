@@ -1,4 +1,3 @@
-import __init__
+from web_application import app
 
-if __name__ == "__init__":
-    __init__.run()
+app.run()
