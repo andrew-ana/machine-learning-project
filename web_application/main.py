@@ -6,6 +6,7 @@ from flask import Blueprint, render_template, request, redirect, url_for, jsonif
 #from .models import *
 import json
 import os
+#comment
 
 main = Blueprint('main', __name__)
 
@@ -48,3 +49,13 @@ def flight_prediction():
     data = dict()
     data["page_name"] = "Flight Predictor"
     return render_template('flightprediction.html', data=data)
+
+@main.route('/visuals/<visual>')
+def visuals(visual):
+    data = dict()
+    data["page_name"] = "Visuals"
+    data_visuals = ["dow", "delay_carriers", "delay_causes", "hourly_delays", "route_delays"]
+    if visual not in data_visuals:
+        return redirect(url_for('main.visuals', visual="dow"))
+    data["display"] = visual
+    return render_template('visuals.html', data=data)
