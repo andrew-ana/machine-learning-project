@@ -59,10 +59,11 @@ $('#form-update').click(function(){
     $(document).prediction();
 });
 
+/*
 // LISTENER: When the button is clicked, follow route
 $('#flight-summary').click(function(){
     $('#form-output').children().remove();
     $('#loading-icon').show()
     $(document).flightsByDate();
 });
-
+*/
